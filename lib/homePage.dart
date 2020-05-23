@@ -1,3 +1,4 @@
+import 'package:align_positioned/align_positioned.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:saeedapp1/buynow.dart';
@@ -50,18 +51,12 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                     )),
-                Positioned.fill(
-                    top: 130,
-                    left: 320,
-                    child: Image.asset("assets/tag.png")
-                )
               ],
             ),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: <Widget>[
-                  GestureDetector(
+            Row(
+              children: <Widget>[
+                Expanded(
+                  child: GestureDetector(
                     onTap: (){
                       Navigator.of(context).push(MaterialPageRoute(builder: (context)=>HomeProducts()));
                     },
@@ -73,59 +68,68 @@ class _HomePageState extends State<HomePage> {
                       ),),
                     ),
                   ),
-                  reusablecard(
+                ),
+                Expanded(
+                  child: reusablecard(
                     image: Image.asset('assets/watch.png'),
                     text: Text('Watches',style: TextStyle(
                         fontSize: 13,
-                        fontWeight: FontWeight.w600
+                        fontWeight: FontWeight.w600,
                     ),),
                   ),
-                  reusablecard(
+                ),
+                Expanded(
+                  child: reusablecard(
                     image: Image.asset('assets/mobile.png'),
                     text: Text('Mobiles',style: TextStyle(
                         fontSize: 13,
                         fontWeight: FontWeight.w600
                     ),),
                   ),
-                  reusablecard(
-                    image: Image.asset('assets/bat.png'),
-                    text: Text('Sports',style: TextStyle(
-                        fontSize: 13,
-                        fontWeight: FontWeight.w600
-                    ),),
-                  ),
-                  reusablecard(
+                ),
+                reusablecard(
+                  image: Image.asset('assets/bat.png'),
+                  text: Text('Sports',style: TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.w600
+                  ),),
+                ),
+                Expanded(
+                  child: reusablecard(
                     image: Image.asset('assets/rowimagelast.png'),
                     text: Text('Services',style: TextStyle(
                         fontSize: 13,
                         fontWeight: FontWeight.w600
                     ),),
                   ),
-                  reusablecard(
+                ),
+                Expanded(
+                  child: reusablecard(
                     image: Image.asset('assets/rowelement1.png'),
                     text: Text('Categories',style: TextStyle(
                         fontSize: 13,
                         fontWeight: FontWeight.w600
                     ),),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  children: <Widget>[
-                    reusablecardofhomemain(
-                      rating: rating,
+            Padding(
+              padding: const EdgeInsets.all(5.0),
+              child: Row(
+                children: <Widget>[
+                  reusablecardofhomemain(
                     text1:  Text('Oppo G4001 u(Glow)'),
                     text2: Text('\$69.99',style: TextStyle(color: Colors.red),),
                     text3:Text('\$99.99',style: TextStyle(color: Colors.grey),),
                     text4: Text(''),
-                    images: Image.asset("assets/devices.png"),
+                    rating: rating,
+                    images: Image.asset("assets/devices.png",
+                    width: MediaQuery.of(context).size.width,
                     ),
-                    GestureDetector(
+                  ),
+                  Expanded(
+                    child: GestureDetector(
                       onTap: (){
                         Navigator.of(context).push(MaterialPageRoute(builder: (context)=>BuyNow()));
                       },
@@ -135,37 +139,37 @@ class _HomePageState extends State<HomePage> {
                         text3:Text('\$99.99',style: TextStyle(color: Colors.grey),),
                         text4: Text(''),
                         rating: rating,
-                        images: Image.asset("assets/girl.png"),
+                        images: Image.asset("assets/girl.png",
+                          width: MediaQuery.of(context).size.width,),
                       ),
-                    )
-                  ],
-                ),
+                    ),
+                  )
+                ],
               ),
             ),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  children: <Widget>[
-                    reusablecardofhomemain(
-                      text1:  Text('Oppo G4001 u(Glow)'),
-                      text2: Text('\$69.99',style: TextStyle(color: Colors.red),),
-                      text3:Text('\$99.99',style: TextStyle(color: Colors.grey),),
-                      text4: Text(''),
-                      rating: rating,
-                      images: Image.asset("assets/devices.png"),
-                    ),
-                    reusablecardofhomemain(
-                      text1:  Text('VR BOX 3D VIDEO GLASSES'),
-                      text2: Text('\$80.99',style: TextStyle(color: Colors.red),),
-                      text3:Text('\$99.99',style: TextStyle(color: Colors.grey),),
-                      text4: Text(''),
-                      rating: rating,
-                      images: Image.asset("assets/girl.png"),
-                    )
-                  ],
-                ),
+            Padding(
+              padding: const EdgeInsets.all(5.0),
+              child: Row(
+                children: <Widget>[
+                  reusablecardofhomemain(
+                    text1:  Text('Oppo G4001 u(Glow)'),
+                    text2: Text('\$69.99',style: TextStyle(color: Colors.red),),
+                    text3:Text('\$99.99',style: TextStyle(color: Colors.grey),),
+                    text4: Text(''),
+                    rating: rating,
+                    images: Image.asset("assets/devices.png",
+                      width: MediaQuery.of(context).size.width,),
+                  ),
+                  reusablecardofhomemain(
+                    text1:  Text('VR BOX 3D VIDEO GLASSES'),
+                    text2: Text('\$80.99',style: TextStyle(color: Colors.red),),
+                    text3:Text('\$99.99',style: TextStyle(color: Colors.grey),),
+                    text4: Text(''),
+                    rating: rating,
+                    images: Image.asset("assets/girl.png",
+                      width: MediaQuery.of(context).size.width,),
+                  )
+                ],
               ),
             ),
           ],
@@ -186,49 +190,56 @@ class reusablecardofhomemain extends StatelessWidget {
  final Text text4;
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 5.0,
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            images,
-            sizedBoxHeightmin,
-           text1,  sizedBoxHeightmin,
-            text2, sizedBoxHeightmin,
-            Row(
+    return  Expanded(
+      flex: 1,
+      child: Card(
+          elevation: 5.0,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                text3,
-                sizedBoxWidth,
-                text4,
-              ],
-            )  ,sizedBoxHeightmin,
-           Row(
-             children: <Widget>[
-               SmoothStarRating(
-                   allowHalfRating: true,
-                   onRated: (v) {
-                   },
-                   starCount: 5,
-                   rating: rating,
-                   size: 20.0,
-                   color: Colors.amberAccent,
-                   borderColor: Colors.amberAccent,
-                   spacing:0.0
-               ),
-               Text('(3)',style: TextStyle(color: Colors.grey,),),
-               sizedBoxWidth,
-               IconButton(icon: Icon(Icons.favorite_border,
-                 color:appColor,
-               size: 20,),
-                   onPressed: (){}
+                images,
+                sizedBoxHeightmin,
+               text1,  sizedBoxHeightmin,
+                text2, sizedBoxHeightmin,
+                Row(
+                  children: <Widget>[
+                    text3,
+                    sizedBoxWidth,
+                    text4,
+                  ],
+                )  ,sizedBoxHeightmin,
+               Row(
+                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                 children: <Widget>[
+                  Row(
+                    children: <Widget>[
+                      SmoothStarRating(
+                          allowHalfRating: true,
+                          onRated: (v) {
+                          },
+                          starCount: 5,
+                          rating: rating,
+                          size: 20.0,
+                          color: Colors.amberAccent,
+                          borderColor: Colors.amberAccent,
+                          spacing:0.0
+                      ),
+                      Text('(3)',style: TextStyle(color: Colors.grey,),),
+                    ],
+                  ),
+                   IconButton(icon: Icon(Icons.favorite_border,
+                     color:appColor,
+                   size: 20,),
+                       onPressed: (){}
+                   )
+                 ],
                )
-             ],
-           )
-          ],
-        ),
+              ],
+            ),
+          ),
       ),
     );
   }
